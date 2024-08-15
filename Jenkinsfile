@@ -1,17 +1,16 @@
 pipeline {
     agent any
-
     stages {
-        stage('Clone') {
+        stage('Checkout') {
             steps {
-               git 'https://github.com/Son200202/Jenkins-Learn.git'
+                checkout scmGit(branches: [[name: 'main']], 
+                                userRemoteConfigs: [[url: 'https://github.com/Son200202/Jenkins-Learn.git']])
             }
         }
-        stage('GoodBye') {
+        stage('Success') {
             steps {
-                echo 'Good Bye'
+                echo 'Success'
             }
         }
-
     }
 }
